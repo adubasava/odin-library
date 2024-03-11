@@ -99,5 +99,16 @@ input:focus {
     border: 1px solid rgb(188, 143, 143);
 }
 
+.status.false {
+    background-color: rgb(188, 143, 143, 0.2);
+    border: 1px solid rgb(188, 143, 143);
+    width: 100%;
+}
+
+.status.true {
+    background-color: rgb(162, 230, 162);
+    border: 1px solid rgb(66, 154, 66);    
+    width: 100%;
+}
 
   
