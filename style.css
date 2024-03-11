@@ -1,0 +1,41 @@
+﻿body {
+    font-family: "Exo 2", sans-serif;
+    background-image: url(img/pexels-janko-ferlic-590493.jpg);
+    display: grid;
+    justify-items: center;
+    gap: 3rem;
+}
+
+.header {
+    font-size: 3rem;
+    color: white;
+}
+
+.filter-white {
+    filter: invert(100%) sepia(0%) saturate(7446%) hue-rotate(296deg) brightness(108%) contrast(100%);
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.logo img {
+    width: 2rem;
+}
+
+.buttons {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+button {
+    border-radius: 8px;
+    padding: 4px 12px;
+    cursor: pointer;
+    height: 2rem;
+
+}
