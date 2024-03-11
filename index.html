@@ -19,9 +19,20 @@
         <div class="buttons">
             <button id="show">Show available books</button>
             <dialog>
-                <button autofocus>Close</button>
+                <button autofocus class="close">Close</button>
                 <form action="#">
-                    <label for="title"></label>
+                    <br>
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title"><br>
+                    <label for="author">Author:</label>
+                    <input type="text" name="author" id="author"><br>
+                    <label for="genre">Genre:</label>
+                    <input type="text" name="genre" id="genre"><br>
+                    <label for="pages">Number of pages:</label>
+                    <input type="number" min="1" name="pages" id="pages"><br>
+                    <label for="isread">Have you read it?</label>
+                    <input type="checkbox" name="isread" id="isread"><br><br>
+                    <button type="submit" class="submit">Add a book</button>
                 </form>
             </dialog>
             <button id="add">Add a book</button>
