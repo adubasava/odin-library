@@ -34,8 +34,36 @@
 
 button {
     border-radius: 8px;
+    border-color: brown;
     padding: 4px 12px;
     cursor: pointer;
     height: 2rem;
-
+    background-color: white;
 }
+
+.main-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid brown;
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.title {
+    font-size: 1.2rem;
+}
+
+.author {
+    color: brown;
+}
+
+::backdrop {
+    background-color: rosybrown;
+    opacity: 0.75;
+  }
+  

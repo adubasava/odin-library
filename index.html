@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -18,9 +18,16 @@
         </div>
         <div class="buttons">
             <button id="show">Show available books</button>
+            <dialog>
+                <button autofocus>Close</button>
+                <form action="#">
+                    <label for="title"></label>
+                </form>
+            </dialog>
             <button id="add">Add a book</button>
         </div>      
-    </div>
+    </div>   
+      
     <div class="main-container">
 
     </div>
