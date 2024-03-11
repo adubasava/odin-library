@@ -1,11 +1,15 @@
 ﻿const myLibrary = [];
 
-function Book(title, author, genre, numberOfPages, isRead) {
+function Book({title, author, genre, numberOfPages, isRead}) {
     this.title = title;
     this.author = author;
     this.genre = genre;
     this.numberOfPages = numberOfPages;
     this.isRead = isRead;
+
+    this.toggleStatus = function() {
+        this.isRead = !this.isRead;
+    }
 }
 
 function displayBookCards() {
@@ -37,19 +41,24 @@ function displayBookCards() {
             `<button class='remove' data-index=${i}>Remove a book</button></center>`,
         ].join("");        
 
-        document.querySelector('.main-container').appendChild(newDiv);      
-        
+        newDiv.querySelector(".remove").addEventListener("click", () => removeBook(i));
+        newDiv.querySelector(".status").addEventListener("click", () => {
+            myLibrary[i].toggleStatus();
+            displayBookCards();
+        });
+
+        document.querySelector('.main-container').appendChild(newDiv);              
     }
 }
 
 // Starting set of books
-const theHobbit = new Book('The Hobbit, or There and Back Again', 'J. R. R. Tolkien', 'fantasy', '295', false);
+const theHobbit = new Book({title: 'The Hobbit, or There and Back Again', author: 'J. R. R. Tolkien', genre: 'fantasy', numberOfPages: '295', isRead: false});
 myLibrary.push(theHobbit);
 
-const hotel = new Book('Hotel', 'A. Hailey', 'novel', '608', true);
+const hotel = new Book({title: 'Hotel', author: 'A. Hailey', genre: 'novel', numberOfPages: '608', isRead: true});
 myLibrary.push(hotel);
 
-const sherlock = new Book('The Great Adventures of Sherlock Holmes', 'A. Conan Doyle', 'detective fiction', '276', true);
+const sherlock = new Book({title: 'The Great Adventures of Sherlock Holmes', author: 'A. Conan Doyle', genre: 'detective fiction', numberOfPages: '276', isRead: true});
 myLibrary.push(sherlock);
 
 
@@ -74,39 +83,27 @@ addEventListener("submit", addBook);
 function addBook(event) {
     event.preventDefault();
 
-    const newBook = new Book(
-        document.querySelector('#title').value, 
-        document.querySelector('#author').value, 
-        document.querySelector('#genre').value,  
-        document.querySelector('#pages').value, 
-        document.querySelector('#isread').checked, 
-        );
+    const newBook = new Book({
+        title: document.querySelector('#title').value, 
+        author: document.querySelector('#author').value, 
+        genre: document.querySelector('#genre').value,  
+        numberOfPages: document.querySelector('#pages').value, 
+        isRead: document.querySelector('#isread').checked, 
+    });
     myLibrary.push(newBook);
     dialog.close();
 }
 
 // Remove a book from the library
 
-removeButtons = document.querySelectorAll('.remove');
-
-removeButtons.forEach((btn) => {
-    btn.addEventListener('click', removeBook(btn.dataset.index));
-})
-
 function removeBook(id) {
-    myLibrary.splice(id, 1);
-    displayBookCards();
-}
+    if (document.querySelectorAll('.remove').length > 1) {
+        document.querySelectorAll('.remove')[id].parentNode.parentNode.remove();
+    } else {
+        document.querySelector('.remove').parentNode.parentNode.remove();
+    }
 
-// Toggle status
-
-bookStatus = document.querySelectorAll('.status');
-
-bookStatus.forEach((btn) => {
-    btn.addEventListener('click', toggleStatus(btn.dataset.id));
-})
-
-function toggleStatus(id) {
-    myLibrary[id].isRead = myLibrary[id].isRead ? false : true;    
-    displayBookCards();
+    // if to remove from array instead:
+    /* myLibrary.splice(id, 1);    
+    displayBookCards(); */
 }
