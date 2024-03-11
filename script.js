@@ -34,7 +34,7 @@ function displayBookCards() {
             "<br><br>",
             `<button class='status ${myLibrary[i].isRead}' data-id=${i}>${status}</button>`,
             "<br><br><center>",
-            `<button class='remove ${i}' data-index=${i}>Remove a book</button></center>`,
+            `<button class='remove' data-index=${i}>Remove a book</button></center>`,
         ].join("");        
 
         document.querySelector('.main-container').appendChild(newDiv);      
