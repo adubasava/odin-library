@@ -19,6 +19,7 @@ function displayBookCards() {
         
         const newDiv = document.createElement("div");
         newDiv.className = "card";
+        newDiv.id = i;
 
         const status = myLibrary[i].isRead ? "Read" : "Not read";
 
@@ -36,7 +37,7 @@ function displayBookCards() {
             myLibrary[i].numberOfPages,
             " p.",
             "<br><br>",
-            `<button class='status ${myLibrary[i].isRead}' data-id=${i}>${status}</button>`,
+            `<button class='status ${myLibrary[i].isRead}'>${status}</button>`,
             "<br><br><center>",
             `<button class='remove' data-index=${i}>Remove a book</button></center>`,
         ].join("");        
@@ -97,11 +98,8 @@ function addBook(event) {
 // Remove a book from the library
 
 function removeBook(id) {
-    if (document.querySelectorAll('.remove').length > 1) {
-        document.querySelectorAll('.remove')[id].parentNode.parentNode.remove();
-    } else {
-        document.querySelector('.remove').parentNode.parentNode.remove();
-    }
+
+    document.getElementById(id).remove();
 
     // if to remove from array instead:
     /* myLibrary.splice(id, 1);    
