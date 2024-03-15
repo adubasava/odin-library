@@ -1,13 +1,15 @@
 ﻿const myLibrary = [];
 
-function Book({title, author, genre, numberOfPages, isRead}) {
-    this.title = title;
-    this.author = author;
-    this.genre = genre;
-    this.numberOfPages = numberOfPages;
-    this.isRead = isRead;
+class Book {
+    constructor({title, author, genre, numberOfPages, isRead}) {
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.numberOfPages = numberOfPages;
+        this.isRead = isRead;
+    }    
 
-    this.toggleStatus = function() {
+    toggleStatus() {
         this.isRead = !this.isRead;
     }
 }
@@ -98,10 +100,10 @@ function addBook(event) {
 // Remove a book from the library
 
 function removeBook(id) {
+    // if to remove from DOM
+    //document.getElementById(id).remove();
 
-    document.getElementById(id).remove();
-
-    // if to remove from array instead:
-    /* myLibrary.splice(id, 1);    
-    displayBookCards(); */
+    // if to remove from array:
+    myLibrary.splice(id, 1);    
+    displayBookCards();
 }
