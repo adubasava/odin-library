@@ -72,30 +72,16 @@ document.querySelector('#show').addEventListener('click', displayBookCards);
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
 const closeButton = document.querySelector("dialog button");
+const addBookForm = document.querySelector('form');
+const error = document.getElementById('error');
 
 showButton.addEventListener("click", () => {
-  dialog.showModal();
+    dialog.showModal();
 });
 
 closeButton.addEventListener("click", () => {
   dialog.close();
 });
-
-addEventListener("submit", addBook);
-
-function addBook(event) {
-    event.preventDefault();
-
-    const newBook = new Book({
-        title: document.querySelector('#title').value, 
-        author: document.querySelector('#author').value, 
-        genre: document.querySelector('#genre').value,  
-        numberOfPages: document.querySelector('#pages').value, 
-        isRead: document.querySelector('#isread').checked, 
-    });
-    myLibrary.push(newBook);
-    dialog.close();
-}
 
 // Remove a book from the library
 
@@ -106,4 +92,21 @@ function removeBook(id) {
     // if to remove from array:
     myLibrary.splice(id, 1);    
     displayBookCards();
+}
+
+addEventListener("submit", addBook);
+
+function addBook(event) {
+    event.preventDefault();    
+   
+    const newBook = new Book({
+        title: document.querySelector('#title').value, 
+        author: document.querySelector('#author').value, 
+        genre: document.querySelector('#genre').value,  
+        numberOfPages: document.querySelector('#pages').value, 
+        isRead: document.querySelector('#isread').checked, 
+    });    
+
+    myLibrary.push(newBook);
+    dialog.close();
 }
